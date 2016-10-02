@@ -79,7 +79,13 @@ final class ModelInfo {
 	}
 
 	public TableInfo getTableInfo(Class<? extends Model> type) {
-		return mTableInfos.get(type);
+		TableInfo tableInfo = mTableInfos.get(type);
+		if (tableInfo == null) {
+			tableInfo = new TableInfo(type);
+			mTableInfos.put(type, tableInfo);
+		}
+		
+		return tableInfo;
 	}
 
 	public TypeSerializer getTypeSerializer(Class<?> type) {

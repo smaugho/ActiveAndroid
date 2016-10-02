@@ -119,7 +119,7 @@ public final class Cache {
 	// Entity cache
 
 	public static String getIdentifier(Class<? extends Model> type, Long id) {
-		return getTableName(type) + "@" + id;
+		return type.getSimpleName() + ":" + getTableName(type) + "@" + id;
 	}
 
 	public static String getIdentifier(Model entity) {
